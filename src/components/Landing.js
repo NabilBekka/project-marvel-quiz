@@ -1,14 +1,28 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import wolverine from '../images/wolverine.png'
 
 const Landing = () => {
+  const [classLanding, setClassLanding] = useState('')
+
   const toSignup = useNavigate()
   const toLogin = useNavigate()
+
+  const handleMouse = () => {
+    setClassLanding('')
+  }
+  const handleMouseLeft = (e) => {
+    e.stopPropagation()
+    setClassLanding('leftImg')
+  }
+  const handleMouseRight = (e) => {
+    e.stopPropagation()
+    setClassLanding('rightImg')
+  }
+
   return (
-    <div className='landing'>
-      <button className='signupButton' onClick={()=>toSignup('signup')} >Inscription</button>
-      <img src={wolverine} alt='wolverine' />
-      <button className='loginButton' onClick={()=>toLogin('login')} >Connexion</button>
+    <div onMouseOver={handleMouse} className={`landing ${classLanding}`}>
+      <button onMouseOver={handleMouseLeft} className='signupButton' onClick={()=>toSignup('signup')} >Inscription</button>
+      <button onMouseOver={handleMouseRight} className='loginButton' onClick={()=>toLogin('login')} >Connexion</button>
     </div>
   )
 }

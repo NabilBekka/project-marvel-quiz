@@ -21,6 +21,10 @@ const Signup = () => {
                       <label htmlFor='password'>Mot de passe</label>
                       <input type='password' id='password' name='password' required/>
                     </div>
+                    <div>
+                      <label htmlFor='confirmPassword'>Confirmer le mot de passe</label>
+                      <input type='password' id='confirmPassword' name='password' required/>
+                    </div>
                     
                     <button className='buttonInscription'>Inscription</button>
                 </form>

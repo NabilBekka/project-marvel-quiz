@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Anton|Bangers|Carter+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -14,7 +17,6 @@ body {
 
 .App {
   min-height: 100vh;
-
 }
 
 header, footer {
@@ -27,43 +29,83 @@ header, footer {
 }
 
 header {
-  
 }
 
 footer{
   
 }
 
+.footer-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a{
+  color: #FFF;
+}
+
+h1 {
+  cursor: pointer;
+  font-family: 'Bangers', cursive;
+  font-size: 70px;
+}
+
+h2,
+h3 {
+  font-weight: normal;
+  text-align: left;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 .errorPage{
+  font-size: 3em;
   text-align: center;
   background-color: #FFF;
-  padding: 50px 0 100px 0;
+  background-image: url('./images/batman.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding-top: 10px;
+  height: 500px;
 }
 
 .landing {
-  flex:1;
-  background-color: red;
+  /* flex:1; */
+  background-color: #EB1D27;
+  background-image: url('./images/wolverine.png');
+  background-repeat: no-repeat;
+  background-position: center center;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  height: 500px;
+  padding: 25px 15% 0 15%;
+}
+
+.leftImg {
+  background-image: url(images/wolverine.png), url(images/griffes-gauche.png);
+}
+
+.rightImg {
+  background-image: url(images/wolverine.png), url(images/griffes-droit.png);
 }
 
 .signupButton , .loginButton {
-  background-color: red;
+  background-color: #EB1D27;
   color: #fff;
-  border: 2px solid #FFF;
-  border-radius: 10px;
+  border: 1px solid #FFF;
+  border-radius: 5px;
   height: 50px;
   width: 200px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 2em;
+  margin: O 5px;
 }
 
 .signupButton:hover , .loginButton:hover{
   background-color: #fff;
-  color: red;
-  border: 2px solid red;
+  color: #EB1D27;
+  border: 2px solid #EB1D27;
   cursor: pointer;
 }
 
@@ -94,14 +136,20 @@ footer{
   padding-bottom: 5px;
   width: 100%;
   margin-top: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
 .formInscription > div >input {
   background: none;
-  color: #FFF;
+  text-transform: uppercase;
+  color: #EB1D27;
   border: none;
   outline: none;
-  margin-left: 10px;
+  margin: 0 5px 0 10px;
   font-size: 1em;
+  flex-grow: 1;
 }
 .formInscription > button {
   color: #FFF;
@@ -115,12 +163,23 @@ footer{
 }
 
 .buttonInscription {
-  background: red;
-  border: 2px solid red;
+  background: #EB1D27;
+  border: 2px solid #EB1D27;
 }
+
+.buttonInscription:hover{
+  background: #5e0c02;
+  border: 2px solid #5e0c02;
+}
+
 .buttonConnexion {
   background: grey;
   border: 2px solid grey;
+}
+
+.buttonConnexion:hover {
+  background: rgb(83, 83, 83);
+  border: 2px solid rgb(83, 83, 83);
 }
 
 .inscription > p:hover {
