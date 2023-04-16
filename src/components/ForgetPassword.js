@@ -9,12 +9,14 @@ const ForgetPassword = () => {
                 <h2>Mot de passe oublié?</h2>
                 <form className='formInscription'>
                     <div>
-                      <label htmlFor='email'>Email</label>
                       <input type='email' id='email' name='email' required/>
+                      <label htmlFor='email'>Email</label>
                     </div>
                     <button className='buttonConnexion'>Récupérer</button>
                 </form>
-                <p onClick={()=>toSignup('../signup')} >Nouveau sur Marvel Quiz? Inscrivez-vous</p>
+                <div>
+                    <p className='link' onClick={()=>toSignup('../signup')} >Nouveau sur Marvel Quiz? Inscrivez-vous</p>
+                </div>
             </div>
         </div>
     )

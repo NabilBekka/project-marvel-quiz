@@ -82,6 +82,10 @@ h3 {
   padding: 25px 15% 0 15%;
 }
 
+.startingImg {
+  background-image: url(images/xmen.png);
+}
+
 .leftImg {
   background-image: url(images/wolverine.png), url(images/griffes-gauche.png);
 }
@@ -90,7 +94,11 @@ h3 {
   background-image: url(images/wolverine.png), url(images/griffes-droit.png);
 }
 
-.signupButton , .loginButton {
+.signupButton, .loginButton{
+  height: 350px;
+}
+
+.signupButton button , .loginButton button {
   background-color: #EB1D27;
   color: #fff;
   border: 1px solid #FFF;
@@ -102,7 +110,7 @@ h3 {
   margin: O 5px;
 }
 
-.signupButton:hover , .loginButton:hover{
+.signupButton button:hover , .loginButton button:hover{
   background-color: #fff;
   color: #EB1D27;
   border: 2px solid #EB1D27;
@@ -131,17 +139,19 @@ h3 {
   border-bottom: 2px dotted grey;
 }
 
-.formInscription > div {
+.formInscription  div {
   border-bottom: 2px solid #FFF;
   padding-bottom: 5px;
   width: 100%;
   margin-top: 35px;
-  display: flex;
+  position: relative;
+  height: 20px;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
-.formInscription > div >input {
+.formInscription div input {
   background: none;
   text-transform: uppercase;
   color: #EB1D27;
@@ -149,9 +159,27 @@ h3 {
   outline: none;
   margin: 0 5px 0 10px;
   font-size: 1em;
-  flex-grow: 1;
+  font-weight: bold;
+  width: 100%;
+  position: absolute;
+  top: 0px;
 }
-.formInscription > button {
+
+.formInscription div label{
+  position: absolute;
+  font-size: 1em;
+  top: 0px;
+  cursor:auto;
+}
+
+.formInscription div input:valid ~ label,
+.formInscription div input:focus ~ label {
+  transform: translateY(-20px);
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.formInscription button {
   color: #FFF;
   text-align: center;
   font-size: 0.8em;
@@ -182,7 +210,15 @@ h3 {
   border: 2px solid rgb(83, 83, 83);
 }
 
-.inscription > p:hover {
+.inscription > div {
+  margin-top: 10px;
+}
+
+.link {
+  margin: 0;
+}
+
+.link:hover {
   cursor: pointer;
   text-decoration: underline;
   width: fit-content;

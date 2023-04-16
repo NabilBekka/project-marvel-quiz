@@ -10,25 +10,27 @@ const Signup = () => {
                 <h2>Inscription</h2>
                 <form className='formInscription'>
                     <div>
-                      <label htmlFor='pseudo'>Pseudo</label>
                       <input type='text' id='pseudo' name='pseudo' required/>
+                      <label htmlFor='pseudo'>Pseudo</label>
                     </div>
                     <div>
-                      <label htmlFor='email'>Email</label>
                       <input type='email' id='email' name='email' required/>
+                      <label htmlFor='email'>Email</label>
                     </div>
                     <div>
-                      <label htmlFor='password'>Mot de passe</label>
                       <input type='password' id='password' name='password' required/>
+                      <label htmlFor='password'>Mot de passe</label>
                     </div>
                     <div>
-                      <label htmlFor='confirmPassword'>Confirmer le mot de passe</label>
                       <input type='password' id='confirmPassword' name='password' required/>
+                      <label htmlFor='confirmPassword'>Confirmer le mot de passe</label>
                     </div>
                     
                     <button className='buttonInscription'>Inscription</button>
                 </form>
-                <p onClick={()=>toLogin('../login')} >Déja inscrit? Connectez-vous</p>
+                <div>
+                    <p className='link' onClick={()=>toLogin('../login')} >Déja inscrit? Connectez-vous</p>
+                </div>
             </div>
         </div>
     )
