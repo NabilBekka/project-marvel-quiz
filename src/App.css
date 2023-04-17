@@ -123,6 +123,7 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
   padding: 0 100px;
+  height: 600px;
 }
 
 .inscription {
@@ -130,6 +131,15 @@ h3 {
   flex-direction: column;
   justify-content: center;
   width: 40%;
+}
+
+.inscription span {
+  display: block;
+  color: #EB1D27;
+  text-align: center;
+  border: 1px solid #EB1D27;
+  padding: 10px;
+  margin: 15px 0;
 }
 
 .formInscription {
@@ -146,9 +156,6 @@ h3 {
   margin-top: 35px;
   position: relative;
   height: 20px;
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-between; */
 }
 
 .formInscription div input {
@@ -198,6 +205,17 @@ h3 {
 .buttonInscription:hover{
   background: #5e0c02;
   border: 2px solid #5e0c02;
+}
+
+.buttonInscription:disabled {
+  background: grey;
+  border: 2px solid grey;
+  cursor:auto;
+}
+
+.buttonInscription:disabled:hover{
+  background-color: grey;
+  border: 2px solid grey;
 }
 
 .buttonConnexion {

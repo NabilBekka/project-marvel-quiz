@@ -13,7 +13,7 @@ const Landing = () => {
     setTimeout(()=>{
       setClassLanding('landing')
       setDisplayBtn(true)
-    }, 1000)
+    }, 1500)
   },[])
 
   const handleMouseClear = () => {
