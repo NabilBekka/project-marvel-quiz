@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import spiderman from '../images/spiderman.png';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from './Firebase/firebaseConfig';
@@ -56,8 +56,9 @@ const Login = () => {
                     {connexionBtn}
                 </form>
                 <div>
-                    <p className='link' onClick={()=>navigate('/signup')} >Nouveau sur Marvel Quiz? Inscrivez-vous</p>
-                    <p className='link' onClick={()=>navigate('/forgetPassword')} >Mot de passe oublié?</p>
+                    <Link className='link' to='/signup'>Nouveau sur Marvel Quiz? Inscrivez-vous</Link>
+                    <br />
+                    <Link className='link' to='/forgetPassword'>Mot de passe oublié?</Link>
                 </div>
             </div>
         </div>

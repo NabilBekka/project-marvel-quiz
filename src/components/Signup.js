@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ironman from '../images/ironman.png';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from './Firebase/firebaseConfig';
@@ -73,7 +73,7 @@ const Signup = () => {
                   {btn}
               </form>
               <div>
-                  <p className='link' onClick={()=>navigate('/login')} >Déja inscrit? Connectez-vous</p>
+                <Link className='link' to='/login'>Déja inscrit? Connectez-vous</Link>
               </div>
             </div>
         </div>

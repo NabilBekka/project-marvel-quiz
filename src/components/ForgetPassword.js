@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import deadpool from '../images/deadpool.png'
 const ForgetPassword = () => {
     const [email, setEmail] = useState('');
-    const toSignup = useNavigate();
 
     //La condition pour activer le bouton de connexion
     const recoverBtn = email.includes('@')? <button className='buttonInscription'>Récupérer</button> :
@@ -22,7 +21,7 @@ const ForgetPassword = () => {
                     {recoverBtn}
                 </form>
                 <div>
-                    <p className='link' onClick={()=>toSignup('../signup')} >Nouveau sur Marvel Quiz? Inscrivez-vous</p>
+                    <Link className='link' to='/signup'>Nouveau sur Marvel Quiz? Inscrivez-vous</Link>
                 </div>
             </div>
         </div>
