@@ -6,12 +6,11 @@ import { auth } from './Firebase/firebaseConfig';
 
 const Signup = () => {
     const data = {pseudo:'',email:'',password:'',confirmPassword:''};
-    
+
     const [loginData , setLoginData] = useState(data);
     const [error , setError] = useState('');
     const {pseudo, email, password, confirmPassword} = loginData;
-    const toLogin = useNavigate();
-    const toWelcome = useNavigate();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
       if ((e.target.type==='text')||(e.target.type==='email')){
@@ -19,28 +18,33 @@ const Signup = () => {
       }else {
         setLoginData({...loginData, [e.target.id]:e.target.value })
       }
-      
     }
 
     const handleSubmit = (e) => {
       e.preventDefault ();
       createUserWithEmailAndPassword(auth, email, password)
-        .then(user=>{
+        .then(userCredential=>{
+          console.log(userCredential.user)
           setLoginData({...data});
           setError('');
-          toWelcome('../welcome');
+          navigate('/welcome');
         })
         .catch(error=>{
           setLoginData({...data});
-          setError(error);
-        })
-      
+          if (error.message==='Firebase: Error (auth/email-already-in-use).'){
+            setError({...error, message:"L'adresse mail est déja utilisée!"});
+          }else {
+            setError(error);
+          }
+        }) 
     }
 
+    //La condition pour activer le bouton d'inscription
     const btn = pseudo === '' || email === '' || password.length < 6 || password !== confirmPassword ?
       <button className='buttonInscription' disabled>Inscription</button> :
       <button className='buttonInscription'>Inscription</button> ;
     
+    //On enregistre l'affichage du message d'erreur d'authentification dans une const
     const errorMessage = error !== '' && <span>{error.message}</span>;
 
     return (
@@ -69,7 +73,7 @@ const Signup = () => {
                   {btn}
               </form>
               <div>
-                  <p className='link' onClick={()=>toLogin('../login')} >Déja inscrit? Connectez-vous</p>
+                  <p className='link' onClick={()=>navigate('/login')} >Déja inscrit? Connectez-vous</p>
               </div>
             </div>
         </div>

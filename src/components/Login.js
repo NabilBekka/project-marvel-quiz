@@ -1,27 +1,63 @@
-import { useNavigate } from 'react-router-dom'
-import spiderman from '../images/spiderman.png'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import spiderman from '../images/spiderman.png';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from './Firebase/firebaseConfig';
 
 const Login = () => {
-    const toSignup = useNavigate()
+    const data = {email:'' ,password:''};
+    const [login, setLogin] = useState(data);
+    const [error, setError] = useState('');
+    const {email, password} = login;
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setLogin({...login, [e.target.id]: e.target.value});
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        signInWithEmailAndPassword(auth, email, password)
+            .then(userCredential => {
+                console.log(userCredential)
+                setLogin({...data});
+                setError('');
+                navigate('/welcome');
+
+            })
+            .catch(e=>{
+                setLogin({...data});
+                setError(e);
+            })
+    }
+
+    //La condition pour activer le bouton de connexion
+    const connexionBtn = email.includes('@') && password!=='' ? <button className='buttonInscription'>Connexion</button> :
+        <button className='buttonInscription' disabled>Connexion</button>
+
+    //On enregistre l'affichage du message d'erreur d'authentification dans une const
+    const errorMessage = error !== '' && <span>{error.message}</span>;
+
     return (
         <div className="login">
             <img  src={spiderman} alt='ironman' />
             <div className='inscription'>
+                {errorMessage}
                 <h2>Connexion</h2>
-                <form className='formInscription'>
+                <form onSubmit={handleSubmit} className='formInscription'>
                     <div>
-                      <input type='email' id='email' name='email' required/>
+                      <input value={email} onChange={handleChange} type='email' id='email' required/>
                       <label htmlFor='email'>Email</label>
                     </div>
                     <div>
-                      <input type='password' id='password' name='password' required/>
+                      <input value={password} onChange={handleChange} type='password' id='password' required/>
                       <label htmlFor='password'>Mot de passe</label>
                     </div>
-                    <button className='buttonConnexion'>Connexion</button>
+                    {connexionBtn}
                 </form>
                 <div>
-                    <p className='link' onClick={()=>toSignup('../signup')} >Nouveau sur Marvel Quiz? Inscrivez-vous</p>
-                    <p className='link' onClick={()=>toSignup('../forgetPassword')} >Mot de passe oublié?</p>
+                    <p className='link' onClick={()=>navigate('/signup')} >Nouveau sur Marvel Quiz? Inscrivez-vous</p>
+                    <p className='link' onClick={()=>navigate('/forgetPassword')} >Mot de passe oublié?</p>
                 </div>
             </div>
         </div>
