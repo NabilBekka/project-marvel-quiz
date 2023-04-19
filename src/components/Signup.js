@@ -45,7 +45,7 @@ const Signup = () => {
       <button className='buttonInscription'>Inscription</button> ;
     
     //On enregistre l'affichage du message d'erreur d'authentification dans une const
-    const errorMessage = error !== '' && <span>{error.message}</span>;
+    const errorMessage = error !== '' && <span className='error'>{error.message}</span>;
 
     return (
         <div className="signup">

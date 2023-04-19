@@ -137,11 +137,19 @@ h3 {
 
 .inscription span {
   display: block;
-  color: #EB1D27;
   text-align: center;
-  border: 1px solid #EB1D27;
   padding: 10px;
   margin: 15px 0;
+}
+
+.error {
+  color: #EB1D27;
+  border: 1px solid #EB1D27;
+}
+
+.success {
+  border: 1px solid #fff;
+  color: #fff;
 }
 
 .formInscription {
