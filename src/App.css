@@ -13,6 +13,7 @@ body {
 
 *{
   font-family: 'Roboto', sans-serif;
+  /* box-shadow: 0 0 0 3px green; */
 }
 
 .App {
@@ -39,6 +40,11 @@ footer{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.footer-container p {
+  text-align: center;
+  margin: 5px 10px;
 }
 
 a{
@@ -70,7 +76,6 @@ h3 {
 }
 
 .landing {
-  /* flex:1; */
   background-color: #EB1D27;
   background-image: url('./images/wolverine.png');
   background-repeat: no-repeat;
@@ -322,4 +327,77 @@ a {
   font-size: 2em;
   font-weight: bold;
   color: rgb(200, 200, 200);
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.levelDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.levelNumber {
+  height: 40px;
+  width: 40px;
+  background-color: grey;
+  color: #FFF;
+  opacity: 0.5;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+}
+
+.levelDiv p {
+  color: grey;
+  opacity: 0.5;
+}
+
+.active .levelNumber {
+  background-color: #EB1D27;
+  opacity: 1;
+}
+
+.active p {
+  color: #EB1D27;
+  opacity: 1;
+}
+
+.nextLevel {
+  color: green;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nextLevel p {
+  margin-left: 0;
+}
+.nextLevel div {
+  border: 1px solid green;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.nextLevel div:hover {
+  background-color: green;
+  color: #FFF;
+  cursor: pointer;
 }

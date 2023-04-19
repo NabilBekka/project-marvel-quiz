@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ironman from '../images/ironman.png';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from './Firebase/firebaseConfig';
+import { auth, user } from './Firebase/firebaseConfig';
+import { setDoc } from 'firebase/firestore';
 
 const Signup = () => {
     const data = {pseudo:'',email:'',password:'',confirmPassword:''};
@@ -23,8 +24,11 @@ const Signup = () => {
     const handleSubmit = (e) => {
       e.preventDefault ();
       createUserWithEmailAndPassword(auth, email, password)
-        .then(userCredential=>{
-          console.log(userCredential.user)
+        .then((userCredential)=>{
+          setDoc(user(userCredential.user.uid),{
+            pseudo,
+            email
+          });
           setLoginData({...data});
           setError('');
           navigate('/welcome');
