@@ -1,6 +1,6 @@
 import { Fragment, memo, useEffect, useRef } from "react";
 
-const Level = ({level, inProgress, handleLevel}) => {
+const Level = ({level, inProgress, handleFinish}) => {
     const ref1 = useRef();
     const ref2 = useRef();
     const ref3 = useRef();
@@ -46,10 +46,14 @@ const Level = ({level, inProgress, handleLevel}) => {
                     <p>Expert</p>
                 </div>
             </div>
-            : <div className="nextLevel">
-                <p>Bravo! Vous pouvez passer au niveau supérieur</p>
-                <div onClick={handleLevel} >NIVEAU SUPERIEUR</div>
-            </div>
+            : level <4 ? <div className="nextLevel">
+                            <p>Bravo! Vous pouvez passer au niveau supérieur</p>
+                            <div onClick={handleFinish} >NIVEAU SUPERIEUR</div>
+                        </div> :
+                        <div className="congratulation">
+                            <p>Félicitation! Vous êtes un expert.</p>
+                        </div>
+                        
         }
     </Fragment>
         
