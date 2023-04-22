@@ -424,6 +424,18 @@ a {
   cursor: pointer;
 }
 
+.failure {
+  color: #EB1D27;
+}
+
+.failure div {
+  border-color: #EB1D27;
+}
+
+.failure div:hover {
+  background-color: #EB1D27;
+}
+
 .progressBar {
   width: 80%;
   display: flex;
@@ -466,4 +478,43 @@ a {
   top: 5px;
   left: 1%;
   bottom: 0;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.test p {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 10px;
+  text-align: left;
+  background-color: rgb(230, 230, 230);
+  border: 2px solid rgb(230, 230, 230);
+  line-height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.test p:hover{
+  background-color: grey;
+  border: 2px solid grey;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.test .selected {
+  background-color: #EB1D27;
+  border: 2px solid #EB1D27;
+  color: #FFF;
+}
+
+.test .selected:hover {
+  background-color: #EB1D27;
+  border: 2px solid #EB1D27;
+  color: #FFF;
 }

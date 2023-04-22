@@ -1,4 +1,4 @@
-const ProgressBar = ({question, sucess, inProgress}) => {
+const ProgressBar = ({question, result, inProgress}) => {
 
   const progressStyle = 99 - (question*9.8);
   return (
@@ -9,8 +9,8 @@ const ProgressBar = ({question, sucess, inProgress}) => {
           <div>Progression: {question}0%</div>
         </div> :
         <div className="progress">
-          <div>Réussite: {sucess}0%</div>
-          <div>Note: {sucess}/10</div>
+          <div>Réussite: {result}0%</div>
+          <div>Note: {result}/10</div>
         </div>
       }
       {inProgress && <div className="bar">
