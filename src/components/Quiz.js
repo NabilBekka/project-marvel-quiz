@@ -2,6 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from "react"
 import Level from "./Level"
 import ProgressBar from "./ProgressBar"
 import Test from "./Test";
+import Answers from "./Answers";
 
 const Quiz = ({userData}) => {
   const [level, setLevel] = useState(1);
@@ -16,13 +17,19 @@ const Quiz = ({userData}) => {
     }
   },[result]);
 
+  // Gerer par le bouton "Terminer"
   const handleLevel = useCallback((answer)=>{
+    // Dans le cas ou le test est fini, on incrémente le niveau depuis le bouton terminer
+    if (level===3){
+      setLevel(4);
+    }
     if (answer){
       setResults(r=>r+1);
     }
     setInProgress(false);
-  },[]);
+  },[level]);
 
+  //Gerer par les boutons "Niveau suivant" et "Réessayer"
   const handleFinish = useCallback (()=>{
     if (success){
       setLevel(l=>l+1);
@@ -33,6 +40,7 @@ const Quiz = ({userData}) => {
     setSuccess(false);
   },[success]);
 
+  //Gerer par le bouton "Suivant"
   const handleQuestion = useCallback((answer) => {
     if (answer){
       setResults(r=>r+1);
@@ -45,15 +53,19 @@ const Quiz = ({userData}) => {
       {userData.pseudo && <h3 >Bonjour {userData.pseudo}</h3>}
       <Level level={level} inProgress={inProgress} handleFinish={handleFinish} success={success}/>
       
-      {level < 4 ? <Fragment>
+      {level < 4 && <Fragment>
             <ProgressBar question={question} inProgress={inProgress} result={result} />
-            <Test inProgress={inProgress} level={level} question={question}
-            handleQuestion={handleQuestion} handleLevel={handleLevel} /> 
-        </Fragment>:
-        <div></div>
+            {inProgress ? <Test level={level} question={question} handleQuestion={handleQuestion} handleLevel={handleLevel} /> :
+            success && <Answers level={level} />}
+        </Fragment>
+      }
+      {level===4 && <Fragment>
+          <ProgressBar result={result} level={level}/> 
+          <Answers level={level} /> 
+        </Fragment>
       }
     </div>
   )
 }
 
-export default Quiz
+export default Quiz;

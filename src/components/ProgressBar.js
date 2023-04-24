@@ -1,5 +1,4 @@
-const ProgressBar = ({question, result, inProgress}) => {
-
+const ProgressBar = ({question, result, inProgress, level}) => {
   const progressStyle = 99 - (question*9.8);
   return (
     <div className="progressBar">

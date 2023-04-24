@@ -253,7 +253,8 @@ a {
 
 .welcome {
   background-color: #FFF;
-  height: 600px;
+  padding-bottom: 50px;
+  min-height: 500px;
 }
 
 .welcome p {
@@ -304,7 +305,8 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  bottom: 0;
+  right: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -314,19 +316,19 @@ a {
 
 .modal div {
   border-radius: 5px;
+  position: relative;
 }
 
 .exitModal {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   background: transparent;
   border: none;
-  color: #FFF;
+  color: #EB1D27;
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
-  color: rgb(200, 200, 200);
 }
 
 .quiz {
@@ -348,6 +350,16 @@ a {
   background-color: #5e0c02;
   border: 1px solid #5e0c02;
   cursor: pointer;
+}
+
+.quiz button:disabled {
+  opacity: 0.5;
+}
+
+.quiz button:disabled:hover {
+  background-color: #EB1D27;
+  border: 1px solid #EB1D27;
+  cursor:auto;
 }
 
 .level {
@@ -517,4 +529,41 @@ a {
   background-color: #EB1D27;
   border: 2px solid #EB1D27;
   color: #FFF;
+}
+
+.answers {
+  width: 80%;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  border: 1px solid rgb(230, 230, 230);
+  background-color: #EB1D27;
+  color: #FFF;
+  padding: 5px;
+  height: 30px;
+}
+
+td {
+  border: 1px solid rgb(230, 230, 230);
+  padding: 5px;
+  height: 30px;
+  position: relative;
+}
+
+td span {
+  position: absolute;
+  background-color: #EB1D27;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  text-align: center;
+  padding-top: 5px;
+  border-radius: 5px;
+  color: #FFF;
+  cursor: pointer;
 }

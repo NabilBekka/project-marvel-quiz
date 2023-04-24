@@ -58,8 +58,7 @@ const Level = ({level, inProgress, handleFinish, success}) => {
             : level <4 ? messageSuccess :
                         <div className="congratulation">
                             <p>Félicitation! Vous êtes un expert.</p>
-                        </div>
-                        
+                        </div>            
         }
     </Fragment>
         

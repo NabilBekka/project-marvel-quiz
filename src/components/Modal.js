@@ -16,7 +16,7 @@ const Modal = ({children, exit}) => {
     <div onClick={exit} className="modal">
         <div onClick={e=>e.stopPropagation()}>
           {children}
-          <button className="exitModal" onClick={exit}>x</button>
+          <button className="exitModal" onClick={exit}>X</button>
         </div>
     </div>, modalWindow)
 }
