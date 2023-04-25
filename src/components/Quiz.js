@@ -14,20 +14,21 @@ const Quiz = ({userData}) => {
   useEffect (()=>{
     if (result >= 7){
       setSuccess(true);
+      if (level===3){
+        setLevel(4);
+      }
     }
-  },[result]);
+  },[result, level]);
 
   // Gerer par le bouton "Terminer"
-  const handleLevel = useCallback((answer)=>{
+  const handleLevel = useCallback((correctAnswer)=>{
     // Dans le cas ou le test est fini, on incrémente le niveau depuis le bouton terminer
-    if (level===3){
-      setLevel(4);
-    }
-    if (answer){
+    
+    if (correctAnswer){
       setResults(r=>r+1);
     }
     setInProgress(false);
-  },[level]);
+  },[]);
 
   //Gerer par les boutons "Niveau suivant" et "Réessayer"
   const handleFinish = useCallback (()=>{

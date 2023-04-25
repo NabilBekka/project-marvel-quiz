@@ -5,16 +5,17 @@ const Modal = ({children, exit}) => {
   const modalWindow = document.createElement('div');
 
   useEffect (()=>{
-    document.body.appendChild(modalWindow);
+    const app= document.querySelector('.App');
+    app.appendChild(modalWindow);
     return ()=>{
-      document.body.removeChild(modalWindow);
+      app.removeChild(modalWindow);
     }
   },[modalWindow]);
 
 
   return createPortal(
     <div onClick={exit} className="modal">
-        <div onClick={e=>e.stopPropagation()}>
+        <div className="modalDiv" onClick={e=>e.stopPropagation()}>
           {children}
           <button className="exitModal" onClick={exit}>X</button>
         </div>
