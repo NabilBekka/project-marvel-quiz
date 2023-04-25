@@ -302,57 +302,6 @@ a {
   cursor: pointer;
 }
 
-.modal{
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0;
-}
-
-.modalDiv {
-  border-radius: 10px;
-  position: relative;
-  background-color: #FFF;
-  width: 80%;
-  position: absolute;
-  top: 10%;
-}
-
-.modalHeader {
-  background-color: #EB1D27;
-  color: #FFF;
-  padding: 5px 10px;
-  font-size: 1em;
-  border-radius: 10px 10px 0 0;
-}
-
-.modalFooter {
-  padding: 5px 10px;
-}
-
-.modalBody {
-  padding: 10px;
-}
-
-.exitModal {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: transparent;
-  border: none;
-  color: #FFF;
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: bold;
-}
-
 .quiz {
   display: flex;
   flex-direction: column;
