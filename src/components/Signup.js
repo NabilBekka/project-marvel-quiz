@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ironman from '../images/ironman.png';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -12,6 +12,14 @@ const Signup = () => {
     const [error , setError] = useState('');
     const {pseudo, email, password, confirmPassword} = loginData;
     const navigate = useNavigate();
+
+    useEffect(()=>{
+      if (error !== ''){
+          setTimeout(()=>{
+              setError('');
+          },5000);
+      }
+    },[error]);
 
     const handleChange = (e) => {
       if ((e.target.type==='text')||(e.target.type==='email')){
@@ -36,7 +44,7 @@ const Signup = () => {
         .catch(error=>{
           setLoginData({...data});
           if (error.message==='Firebase: Error (auth/email-already-in-use).'){
-            setError({...error, message:"L'adresse mail est déja utilisée!"});
+            setError({...error, message:"Un compte a déja été créé avec cette adresse email!"});
           }else {
             setError(error);
           }

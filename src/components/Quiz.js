@@ -5,6 +5,7 @@ import Test from "./Test";
 import Answers from "./Answers";
 
 const Quiz = ({userData}) => {
+  const [start, setStart] = useState(false);
   const [level, setLevel] = useState(1);
   const [inProgress, setInProgress] = useState(true);
   const [question, setQuestion] = useState(1);
@@ -51,19 +52,28 @@ const Quiz = ({userData}) => {
 
   return (
     <div className="quiz">
-      {userData.pseudo && <h3 >Bonjour {userData.pseudo}</h3>}
-      <Level level={level} inProgress={inProgress} handleFinish={handleFinish} success={success}/>
-      
-      {level < 4 && <Fragment>
-            <ProgressBar question={question} inProgress={inProgress} result={result} />
-            {inProgress ? <Test level={level} question={question} handleQuestion={handleQuestion} handleLevel={handleLevel} /> :
-            success && <Answers level={level} />}
-        </Fragment>
-      }
-      {level===4 && <Fragment>
-          <ProgressBar result={result} level={level}/> 
-          <Answers level={level} /> 
-        </Fragment>
+      {start ? 
+        <Fragment>
+          <h3>A vous de jouer!</h3>
+          <Level level={level} inProgress={inProgress} handleFinish={handleFinish} success={success}/>
+          
+          {level < 4 && <Fragment>
+                <ProgressBar question={question} inProgress={inProgress} result={result} />
+                {inProgress ? <Test level={level} question={question} handleQuestion={handleQuestion} handleLevel={handleLevel} /> :
+                success && <Answers level={level} />}
+            </Fragment>
+          }
+          {level===4 && <Fragment>
+              <ProgressBar result={result} level={level}/> 
+              <Answers level={level} /> 
+            </Fragment>
+          }
+        </Fragment>:
+        userData.pseudo && <Fragment>
+          <h3 >Bonjour {userData.pseudo}</h3>
+          <h3> Appuyer sur Start pour commencer le quiz</h3>
+          <button onClick={() => setStart(true)}>Start</button>
+        </Fragment>  
       }
     </div>
   )

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import spiderman from '../images/spiderman.png';
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -11,6 +11,14 @@ const Login = () => {
     const {email, password} = login;
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        if (error !== ''){
+            setTimeout(()=>{
+                setError('');
+            },5000);
+        }
+    },[error]);
+
     const handleChange = (e) => {
         setLogin({...login, [e.target.id]: e.target.value});
     }
@@ -19,7 +27,6 @@ const Login = () => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
             .then(userCredential => {
-                console.log(userCredential)
                 setLogin({...data});
                 setError('');
                 navigate('/welcome');
@@ -27,7 +34,7 @@ const Login = () => {
             })
             .catch(e=>{
                 setLogin({...data});
-                setError(e);
+                setError({...e, message:"Email et/ou mot de passe incorrect(s)"});
             })
     }
 

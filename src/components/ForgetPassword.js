@@ -1,5 +1,5 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import deadpool from '../images/deadpool.png'
 import { auth } from './Firebase/firebaseConfig';
@@ -8,6 +8,14 @@ const ForgetPassword = () => {
     const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        if (error !== ''){
+            setTimeout(()=>{
+                setError('');
+            },5000);
+        }
+    },[error]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -21,7 +29,7 @@ const ForgetPassword = () => {
                 }, 7000);
             })
             .catch(error=>{
-                setError(error);
+                setError({...error, message:"Il n'éxiste pas de compte à cette adresse!"});
                 setEmail('');
             })
     }

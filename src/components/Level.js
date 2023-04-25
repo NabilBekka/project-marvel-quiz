@@ -38,9 +38,9 @@ const Level = ({level, inProgress, handleFinish, success}) => {
                                 <p>Oups! Vous avez échoué au test</p>
                                 <div onClick={handleFinish} >Réessayer</div>
                             </div>
-
+    console.log(inProgress)
     return (<Fragment>
-        {inProgress ? 
+        {level <4 ? inProgress ? 
             <div className="level">
                 <div ref={ref1} className="levelDiv ">
                     <div className="levelNumber">1</div>
@@ -54,11 +54,10 @@ const Level = ({level, inProgress, handleFinish, success}) => {
                     <div className="levelNumber">3</div>
                     <p>Expert</p>
                 </div>
-            </div>
-            : level <4 ? messageSuccess :
-                        <div className="congratulation">
-                            <p>Félicitation! Vous êtes un expert.</p>
-                        </div>            
+            </div>:messageSuccess :
+            <div className="congratulation">
+                <p>Félicitation! Vous êtes un expert.</p>
+            </div> 
         }
     </Fragment>
         
